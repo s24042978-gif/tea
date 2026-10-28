@@ -252,14 +252,14 @@
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 26px;
+      gap: 16px;
+      margin-top: 28px;
       position: relative;
       min-height: 48px;
     }
     .btn {
       border-radius: 14px;
-      padding: 11px 18px;
+      padding: 12px 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -272,7 +272,7 @@
       overflow: hidden;
       border: none;
       color: #fff;
-      text-shadow: 0 1px 2px rgba(0,0,0,.25);
+      text-shadow: 0 1px 3px rgba(0,0,0,.35);
     }
     .btn:hover { transform: translateY(-4px); }
     .btn:active {
@@ -280,20 +280,20 @@
       filter: brightness(.95);
     }
     .btn:focus-visible {
-      outline: 3px solid #f08c3a;
+      outline: 3px solid #7c5cff;
       outline-offset: 3px;
     }
 
-    /* 3D Primary — warm amber / tea */
+    /* 3D Primary — neon cyan → blue (RGB) */
     .btn-primary {
       isolation: isolate;
-      background: linear-gradient(180deg, #ffb347 0%, #ff8c1a 38%, #e86b00 72%, #c45a00 100%);
+      background: linear-gradient(135deg, #00e5ff 0%, #2979ff 45%, #304ffe 100%);
       box-shadow:
-        0 1px 0 rgba(255,255,255,.45) inset,
-        0 -3px 0 rgba(0,0,0,.18) inset,
-        0 6px 0 #a34a00,
-        0 10px 22px rgba(200, 90, 0, .4),
-        0 0 0 1px rgba(180, 80, 0, .3);
+        0 1px 0 rgba(255,255,255,.5) inset,
+        0 -3px 0 rgba(0,0,0,.2) inset,
+        0 6px 0 #1a237e,
+        0 10px 28px rgba(41, 121, 255, .55),
+        0 0 20px rgba(0, 229, 255, .35);
       font-weight: 800;
       animation: ctaGlow 2.4s ease-in-out infinite;
     }
@@ -303,75 +303,75 @@
       z-index: 0;
       top: 0; left: 0; right: 0;
       height: 48%;
-      background: linear-gradient(180deg, rgba(255,255,255,.35), transparent);
+      background: linear-gradient(180deg, rgba(255,255,255,.4), transparent);
       border-radius: 14px 14px 40% 40%;
       pointer-events: none;
     }
     .btn-primary:hover {
-      background: linear-gradient(180deg, #ffbc5c 0%, #ff981f 38%, #f07800 72%, #d06000 100%);
+      background: linear-gradient(135deg, #18ffff 0%, #448aff 45%, #536dfe 100%);
       box-shadow:
-        0 1px 0 rgba(255,255,255,.5) inset,
-        0 -3px 0 rgba(0,0,0,.15) inset,
-        0 8px 0 #a34a00,
-        0 14px 28px rgba(200, 90, 0, .5),
-        0 0 0 1px rgba(180, 80, 0, .35);
+        0 1px 0 rgba(255,255,255,.55) inset,
+        0 -3px 0 rgba(0,0,0,.18) inset,
+        0 8px 0 #1a237e,
+        0 14px 32px rgba(41, 121, 255, .65),
+        0 0 28px rgba(0, 229, 255, .5);
       transform: translateY(-5px);
     }
     .btn-primary:active {
       box-shadow:
         0 1px 0 rgba(255,255,255,.3) inset,
         0 -1px 0 rgba(0,0,0,.2) inset,
-        0 2px 0 #a34a00,
-        0 4px 12px rgba(200, 90, 0, .35);
+        0 2px 0 #1a237e,
+        0 4px 14px rgba(41, 121, 255, .4);
       transform: translateY(2px);
     }
 
-    /* 3D Secondary — deep teal */
+    /* 3D Secondary — neon magenta → purple */
     .btn-secondary {
-      background: linear-gradient(180deg, #3dd4c0 0%, #14b8a6 40%, #0d9488 75%, #0f766e 100%);
+      background: linear-gradient(135deg, #ff4ecd 0%, #e040fb 40%, #aa00ff 100%);
       box-shadow:
-        0 1px 0 rgba(255,255,255,.4) inset,
+        0 1px 0 rgba(255,255,255,.45) inset,
         0 -3px 0 rgba(0,0,0,.2) inset,
-        0 6px 0 #0a5c56,
-        0 10px 22px rgba(13, 148, 136, .4),
-        0 0 0 1px rgba(10, 90, 85, .3);
+        0 6px 0 #6a0080,
+        0 10px 28px rgba(224, 64, 251, .5),
+        0 0 18px rgba(255, 78, 205, .35);
     }
     .btn-secondary::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 48%;
-      background: linear-gradient(180deg, rgba(255,255,255,.32), transparent);
+      background: linear-gradient(180deg, rgba(255,255,255,.35), transparent);
       border-radius: 14px 14px 40% 40%;
       pointer-events: none;
     }
     .btn-secondary:hover {
-      background: linear-gradient(180deg, #4de0cc 0%, #1fc4b0 40%, #12a394 75%, #118a80 100%);
+      background: linear-gradient(135deg, #ff6ec7 0%, #ea80fc 40%, #b388ff 100%);
       box-shadow:
-        0 1px 0 rgba(255,255,255,.45) inset,
+        0 1px 0 rgba(255,255,255,.5) inset,
         0 -3px 0 rgba(0,0,0,.18) inset,
-        0 8px 0 #0a5c56,
-        0 14px 28px rgba(13, 148, 136, .5),
-        0 0 0 1px rgba(10, 90, 85, .35);
+        0 8px 0 #6a0080,
+        0 14px 32px rgba(224, 64, 251, .6),
+        0 0 26px rgba(255, 78, 205, .45);
       transform: translateY(-5px);
     }
     .btn-secondary:active {
       box-shadow:
         0 1px 0 rgba(255,255,255,.25) inset,
-        0 2px 0 #0a5c56,
-        0 4px 12px rgba(13, 148, 136, .35);
+        0 2px 0 #6a0080,
+        0 4px 14px rgba(224, 64, 251, .4);
       transform: translateY(2px);
     }
 
-    /* 3D No — coral pink, small */
+    /* 3D No — neon red, small */
     .btn-no {
-      background: linear-gradient(180deg, #ff6b8a 0%, #f43f6a 40%, #e11d55 75%, #be123c 100%);
+      background: linear-gradient(135deg, #ff5252 0%, #ff1744 45%, #d50000 100%);
       box-shadow:
         0 1px 0 rgba(255,255,255,.4) inset,
         0 -2px 0 rgba(0,0,0,.2) inset,
-        0 5px 0 #9f1239,
-        0 8px 18px rgba(225, 29, 85, .45),
-        0 0 0 1px rgba(150, 20, 55, .3);
+        0 5px 0 #b71c1c,
+        0 8px 20px rgba(255, 23, 68, .5),
+        0 0 14px rgba(255, 82, 82, .3);
       font-weight: 800;
       font-size: 13px;
       padding: 8px 14px;
@@ -389,13 +389,13 @@
       pointer-events: none;
     }
     .btn-no:hover {
-      background: linear-gradient(180deg, #ff7a96 0%, #f54e75 40%, #e82a5e 75%, #c91a48 100%);
+      background: linear-gradient(135deg, #ff6e6e 0%, #ff4081 45%, #f50057 100%);
       box-shadow:
         0 1px 0 rgba(255,255,255,.45) inset,
         0 -2px 0 rgba(0,0,0,.18) inset,
-        0 6px 0 #9f1239,
-        0 12px 24px rgba(225, 29, 85, .55),
-        0 0 0 1px rgba(150, 20, 55, .35);
+        0 6px 0 #b71c1c,
+        0 12px 24px rgba(255, 23, 68, .6),
+        0 0 20px rgba(255, 82, 82, .4);
     }
     .btn-no.is-dodging {
       position: fixed;
@@ -406,15 +406,15 @@
       pointer-events: auto;
     }
 
-    /* 3D Secret — rich violet */
+    /* 3D Secret — neon violet → indigo */
     .btn-secret {
-      background: linear-gradient(180deg, #c084fc 0%, #a855f7 38%, #8b5cf6 72%, #7c3aed 100%);
+      background: linear-gradient(135deg, #b388ff 0%, #7c4dff 40%, #651fff 100%);
       box-shadow:
-        0 1px 0 rgba(255,255,255,.4) inset,
+        0 1px 0 rgba(255,255,255,.45) inset,
         0 -3px 0 rgba(0,0,0,.2) inset,
-        0 6px 0 #5b21b6,
-        0 10px 22px rgba(124, 58, 237, .42),
-        0 0 0 1px rgba(90, 30, 180, .3);
+        0 6px 0 #311b92,
+        0 10px 28px rgba(124, 77, 255, .5),
+        0 0 18px rgba(179, 136, 255, .35);
       font-weight: 700;
     }
     .btn-secret::before {
@@ -422,25 +422,25 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 48%;
-      background: linear-gradient(180deg, rgba(255,255,255,.32), transparent);
+      background: linear-gradient(180deg, rgba(255,255,255,.35), transparent);
       border-radius: 14px 14px 40% 40%;
       pointer-events: none;
     }
     .btn-secret:hover {
-      background: linear-gradient(180deg, #c99aff 0%, #b06bff 38%, #9755f8 72%, #8b3ef0 100%);
+      background: linear-gradient(135deg, #c3a0ff 0%, #8c6aff 40%, #7c4dff 100%);
       box-shadow:
-        0 1px 0 rgba(255,255,255,.45) inset,
+        0 1px 0 rgba(255,255,255,.5) inset,
         0 -3px 0 rgba(0,0,0,.18) inset,
-        0 8px 0 #5b21b6,
-        0 14px 28px rgba(124, 58, 237, .52),
-        0 0 0 1px rgba(90, 30, 180, .35);
+        0 8px 0 #311b92,
+        0 14px 32px rgba(124, 77, 255, .6),
+        0 0 26px rgba(179, 136, 255, .45);
       transform: translateY(-5px);
     }
     .btn-secret:active {
       box-shadow:
         0 1px 0 rgba(255,255,255,.25) inset,
-        0 2px 0 #5b21b6,
-        0 4px 12px rgba(124, 58, 237, .35);
+        0 2px 0 #311b92,
+        0 4px 14px rgba(124, 77, 255, .4);
       transform: translateY(2px);
     }
 
@@ -804,19 +804,19 @@
     @keyframes ctaGlow {
       0%, 100% {
         box-shadow:
-          0 1px 0 rgba(255,255,255,.45) inset,
-          0 -3px 0 rgba(0,0,0,.18) inset,
-          0 6px 0 #a34a00,
-          0 10px 22px rgba(200, 90, 0, .4),
-          0 0 0 1px rgba(180, 80, 0, .3);
+          0 1px 0 rgba(255,255,255,.5) inset,
+          0 -3px 0 rgba(0,0,0,.2) inset,
+          0 6px 0 #1a237e,
+          0 10px 28px rgba(41, 121, 255, .55),
+          0 0 20px rgba(0, 229, 255, .35);
       }
       50% {
         box-shadow:
-          0 1px 0 rgba(255,255,255,.5) inset,
-          0 -3px 0 rgba(0,0,0,.15) inset,
-          0 6px 0 #a34a00,
-          0 12px 28px rgba(200, 90, 0, .55),
-          0 0 0 1px rgba(180, 80, 0, .35);
+          0 1px 0 rgba(255,255,255,.55) inset,
+          0 -3px 0 rgba(0,0,0,.18) inset,
+          0 6px 0 #1a237e,
+          0 12px 32px rgba(41, 121, 255, .7),
+          0 0 28px rgba(0, 229, 255, .5);
       }
     }
     @keyframes noPulse {
@@ -824,17 +824,17 @@
         box-shadow:
           0 1px 0 rgba(255,255,255,.4) inset,
           0 -2px 0 rgba(0,0,0,.2) inset,
-          0 5px 0 #9f1239,
-          0 8px 18px rgba(225, 29, 85, .45),
-          0 0 0 1px rgba(150, 20, 55, .3);
+          0 5px 0 #b71c1c,
+          0 8px 20px rgba(255, 23, 68, .5),
+          0 0 14px rgba(255, 82, 82, .3);
       }
       50% {
         box-shadow:
           0 1px 0 rgba(255,255,255,.45) inset,
           0 -2px 0 rgba(0,0,0,.18) inset,
-          0 5px 0 #9f1239,
-          0 10px 24px rgba(225, 29, 85, .6),
-          0 0 0 1px rgba(150, 20, 55, .35);
+          0 5px 0 #b71c1c,
+          0 10px 24px rgba(255, 23, 68, .65),
+          0 0 20px rgba(255, 82, 82, .45);
       }
     }
     @keyframes orbit { to { transform: rotate(360deg); } }
@@ -874,7 +874,7 @@
         grid-template-columns: 1fr;
         width: min(100%, 420px);
         margin-left: auto; margin-right: auto;
-        gap: 9px;
+        gap: 14px;
       }
       .actions .btn { width: 100%; }
       .actions .btn-no { width: auto; justify-self: center; }
