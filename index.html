@@ -11,15 +11,15 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream: #fff7ed;
-      --paper: #fffdf9;
-      --ink: #39241f;
-      --muted: #7b6258;
-      --brown: #743d2c;
-      --brown-dark: #4c2922;
-      --orange: #e99a5a;
-      --peach: #f8d8c0;
-      --pink: #f3b7ad;
+      --cream: #fff9f1;
+      --paper: #fffdf8;
+      --ink: #33211d;
+      --muted: #78645c;
+      --brown: #7b402e;
+      --brown-dark: #51291f;
+      --orange: #f08a45;
+      --peach: #f8d7bd;
+      --pink: #f5c1c8;
       --line: rgba(86, 48, 37, .12);
       --shadow: 0 28px 80px rgba(91, 50, 35, .12);
     }
@@ -30,11 +30,12 @@
       min-height: 100vh;
       color: var(--ink);
       background:
-        radial-gradient(ellipse at 8% 8%, rgba(248,216,192,.65), transparent 32rem),
-        radial-gradient(ellipse at 93% 84%, rgba(243,183,173,.32), transparent 28rem),
-        var(--cream);
+        radial-gradient(ellipse at 8% 10%, rgba(255, 196, 145, .30), transparent 34rem),
+        radial-gradient(ellipse at 94% 25%, rgba(246, 190, 207, .25), transparent 31rem),
+        radial-gradient(ellipse at 52% 94%, rgba(190, 226, 204, .22), transparent 34rem),
+        linear-gradient(145deg, #fffaf2 0%, #fff6f2 52%, #f8fbf5 100%);
       font-family: "Hind Siliguri", "DM Sans", sans-serif;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
     button { font: inherit; }
     .page-shell { width: min(1160px, calc(100% - 40px)); margin: 0 auto; position: relative; z-index: 1; }
@@ -51,60 +52,41 @@
     .highlight::after { content:""; position:absolute; z-index:-1; left:-3px; right:-4px; bottom:2px; height:17px; border-radius:10px 5px 12px 4px; background:#f5c79f; transform:rotate(-1.6deg); opacity:.78; }
     .lead { font-size:clamp(17px, 1.6vw, 20px); line-height:1.85; color:var(--muted); max-width:520px; margin:0; }
     .lead strong { color:var(--ink); font-weight:600; }
-    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:29px; position:relative; }
-    .btn { cursor:pointer; border:0; border-radius:15px; padding:14px 20px; display:inline-flex; align-items:center; justify-content:center; gap:9px; font-size:16px; font-weight:600; transition:transform .2s ease, box-shadow .2s ease, background .2s ease; }
-    .btn:hover { transform:translateY(-3px); }
-    .btn:active { transform:translateY(0) scale(.98); }
-    .btn:focus-visible { outline:3px solid #e99a5a; outline-offset:4px; }
+    .actions { display:flex; flex-wrap:wrap; align-items:stretch; gap:12px; margin-top:29px; position:relative; }
+    .btn {
+      cursor:pointer; border:1px solid transparent; border-radius:15px; padding:14px 20px;
+      display:inline-flex; align-items:center; justify-content:center; gap:9px;
+      font-size:16px; line-height:1.35; font-weight:700; text-align:center;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+      -webkit-tap-highlight-color:transparent; touch-action:manipulation;
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .btn:active { transform:translateY(0) scale(.985); }
+    .btn:focus-visible { outline:3px solid #f59e0b; outline-offset:3px; }
     .btn-primary {
-      position:relative;
-      isolation:isolate;
-      overflow:hidden;
-      color:#fff;
-      background:linear-gradient(115deg, #ff8a00 0%, #ff5a1f 52%, #e84616 100%);
-      border:1px solid #ffffff80;
-      box-shadow:0 12px 28px #f9731655, 0 0 0 4px #ff8a0025;
+      position:relative; isolation:isolate; overflow:hidden; color:#fff;
+      background:linear-gradient(110deg, #f97316 0%, #f4511e 55%, #dc3c16 100%);
+      border:1px solid #fff4e8; box-shadow:0 5px 0 #bd3c17, 0 8px 16px rgba(194, 65, 12, .16);
       font-weight:800;
-      animation:ctaGlow 1.8s ease-in-out infinite;
     }
     .btn-primary::before {
-      content:"";
-      position:absolute;
-      z-index:-1;
-      top:-60%; left:-45%;
-      width:32%; height:220%;
-      background:#ffffff75;
-      transform:rotate(24deg);
-      animation:ctaShine 3.2s ease-in-out infinite;
+      content:""; position:absolute; z-index:-1; top:-60%; left:-45%; width:28%; height:220%;
+      background:rgba(255,255,255,.48); transform:rotate(24deg); animation:ctaShine 4s ease-in-out infinite;
     }
-    .btn-primary:hover {
-      background:linear-gradient(115deg, #f97316 0%, #ea580c 52%, #c2410c 100%);
-      box-shadow:0 16px 36px #f9731670, 0 0 0 6px #ff8a0025;
-      transform:translateY(-4px) scale(1.025);
-    }
-    .btn-secondary { color:#fff; background:linear-gradient(135deg, #0ea5e9, #0369a1); border:1px solid #ffffff80; box-shadow:0 9px 22px #0284c733; }
-    .btn-secondary:hover { background:linear-gradient(135deg, #0284c7, #075985); box-shadow:0 12px 27px #0284c744; }
+    .btn-primary:hover { background:linear-gradient(110deg, #ea580c, #e84616 60%, #c83212); box-shadow:0 5px 0 #a83214, 0 10px 18px rgba(194,65,12,.20); }
+    .btn-secondary { color:#fff; background:linear-gradient(135deg, #0891b2, #0369a1); border:1px solid #e0f2fe; box-shadow:0 4px 0 #075985, 0 7px 14px rgba(3,105,161,.13); }
+    .btn-secondary:hover { background:linear-gradient(135deg, #0e7490, #075985); }
     .btn-no {
-      color:#fff;
-      background:linear-gradient(135deg, #ff2876, #c9004f);
-      border:2px solid #fff;
-      outline:2px solid #ff2876;
-      outline-offset:3px;
-      box-shadow:0 0 0 7px #ff287632, 0 12px 30px #c9004f70;
-      font-weight:800;
-      animation:noPulse 1.65s ease-in-out infinite;
+      flex:0 0 auto; width:auto; min-width:112px; padding:10px 24px; border-radius:13px;
+      color:#fff; background:linear-gradient(135deg, #f43f5e 0%, #e11d48 55%, #be123c 100%);
+      border:2px solid #fff; outline:2px solid #fb7185; outline-offset:2px;
+      box-shadow:0 3px 0 #9f1239, 0 6px 12px rgba(190,18,60,.18);
+      font-size:15px; font-weight:800; animation:noPulse 2.2s ease-in-out infinite;
     }
-    .btn-no:hover { background:linear-gradient(135deg, #f00061, #a80042); box-shadow:0 0 0 9px #ff28763b, 0 15px 34px #c9004f80; }
-    .btn-secret {
-      color:#7b2d56;
-      color:#fff;
-      background:linear-gradient(135deg, #8b5cf6, #6d28d9);
-      border:1px solid #ffffff80;
-      box-shadow:0 8px 22px #7c3aed35;
-      font-weight:700;
-    }
-    .btn-secret:hover { background:linear-gradient(135deg, #7c3aed, #5b21b6); box-shadow:0 12px 28px #7c3aed55; }
-    .btn-no.is-dodging { position:absolute; z-index:100; width:auto; max-width:100%; white-space:nowrap; }
+    .btn-no:hover { background:linear-gradient(135deg, #e11d48, #be123c); box-shadow:0 3px 0 #881337, 0 8px 16px rgba(190,18,60,.22); }
+    .btn-secret { color:#fff; background:linear-gradient(135deg, #7c3aed, #5b21b6); border:1px solid #ede9fe; box-shadow:0 4px 0 #4c1d95, 0 7px 14px rgba(91,33,182,.13); font-weight:700; }
+    .btn-secret:hover { background:linear-gradient(135deg, #6d28d9, #4c1d95); }
+    .btn-no:focus-visible { outline:3px solid #fb7185; outline-offset:5px; }
     .microcopy { display:flex; align-items:center; gap:8px; margin-top:18px; color:#987e72; font-size:13px; }
     .microcopy svg { flex:none; }
     .scene { min-height:470px; position:relative; display:grid; place-items:center; isolation:isolate; }
@@ -140,42 +122,39 @@
     .response { display:none; margin-top:18px; max-width:520px; padding:14px 16px; border:1px solid #e8c7b0; border-radius:16px; background:#fffaf4; color:var(--brown); line-height:1.6; animation:fadeUp .35s ease both; }
     .response.show { display:block; }
     .response strong { display:block; font-size:17px; margin-bottom:2px; }
-    .confetti { position:fixed; z-index:20; pointer-events:none; width:8px; height:12px; border-radius:2px; animation:confettiFall 1.8s ease-out forwards; }
+    .confetti { position:fixed; z-index:9999; pointer-events:none; width:8px; height:12px; border-radius:2px; animation:confettiBurst 1.15s cubic-bezier(.12,.7,.22,1) forwards; will-change:transform,opacity; }
     .footer-heart { color:#c8796d; }
     .developer-credit { color:#6d28d9; font-weight:600; text-decoration:none; border-bottom:1px dashed #a78bfa; padding-bottom:2px; }
     .developer-credit:hover { color:#4c1d95; border-bottom-style:solid; }
     .developer-credit strong { font-weight:800; }
-    @keyframes ctaGlow {
-      0%,100% { box-shadow:0 12px 28px #f9731645, 0 0 0 4px #ff8a0018; }
-      50% { box-shadow:0 15px 34px #f9731670, 0 0 0 8px #ff8a0010; }
-    }
     @keyframes ctaShine {
       0%, 25% { left:-45%; opacity:0; }
       42% { opacity:1; }
       65%, 100% { left:130%; opacity:0; }
     }
     @keyframes noPulse {
-      0%,100% { box-shadow:0 0 0 6px #ff28762c, 0 10px 26px #c9004f65; }
-      50% { box-shadow:0 0 0 11px #ff287620, 0 14px 34px #c9004f90; }
+      0%,100% { outline-offset:2px; box-shadow:0 3px 0 #9f1239, 0 6px 12px rgba(190,18,60,.16); }
+      50% { outline-offset:4px; box-shadow:0 3px 0 #9f1239, 0 8px 15px rgba(190,18,60,.22); }
     }
     @keyframes orbit { to { transform:rotate(360deg); } }
     @keyframes cardFloat { 0%,100% { translate:0 0; } 50% { translate:0 -9px; } }
     @keyframes steam { 0% { opacity:0; transform:translateY(14px) scale(.75) rotate(8deg); } 35% { opacity:.65; } 100% { opacity:0; transform:translateY(-22px) scale(1.2) rotate(-8deg); } }
     @keyframes heartBob { 0%,100% { translate:0 0; } 50% { translate:0 -8px; } }
     @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes confettiFall { 0% { opacity:1; transform:translate(0,-10px) rotate(0deg); } 100% { opacity:0; transform:translate(var(--drift), 90vh) rotate(650deg); } }
+    @keyframes confettiBurst { 0% { opacity:1; transform:translate(-50%,-50%) rotate(0deg) scale(1); } 100% { opacity:0; transform:translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(var(--spin)) scale(.55); } }
     @media (max-width: 850px) {
       .hero { grid-template-columns:1fr; padding-top:30px; gap:18px; }
       .hero-copy { text-align:center; }
       .eyebrow { margin:0 auto; }
       h1,.lead,.response { margin-left:auto; margin-right:auto; }
-      .actions { display:grid; grid-template-columns:1fr; width:min(100%, 520px); margin-left:auto; margin-right:auto; }
-      .actions .btn { width:100%; }
+      .actions { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); align-items:center; width:min(100%, 520px); margin-left:auto; margin-right:auto; gap:11px; }
+      .actions .btn-primary, .actions .btn-secondary, .actions .btn-secret { grid-column:1 / -1; width:100%; }
+      .actions .btn-no { grid-column:1 / -1; justify-self:center; width:auto; min-width:112px; max-width:45%; }
       .microcopy { justify-content:center; }
       .scene { min-height:440px; }
       .tea-card { min-height:410px; }
       .floating-note { left:calc(50% - 205px); bottom:20px; }
-      .bottom-row { flex-direction:column; text-align:center; }
+      .bottom-row { flex-direction:column; text-align:center; gap:12px; }
       .bottom-tags { justify-content:center; }
     }
     @media (max-width: 480px) {
@@ -187,8 +166,10 @@
       .hero { padding:28px 0 36px; }
       h1 { font-size:clamp(36px, 10.2vw, 48px); margin-top:19px; }
       .lead { font-size:16px; }
-      .btn { width:100%; padding:13px 15px; }
-      .actions { display:grid; grid-template-columns:1fr; }
+      .btn { padding:13px 15px; font-size:15px; border-radius:13px; }
+      .actions { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; }
+      .actions .btn-primary, .actions .btn-secondary, .actions .btn-secret { grid-column:1 / -1; width:100%; }
+      .actions .btn-no { grid-column:1 / -1; justify-self:center; width:auto; min-width:104px; max-width:42%; padding:9px 23px; font-size:14px; }
       .scene { min-height:385px; margin:0 -3px; }
       .orbit { width:330px; max-width:100%; }
       .tea-card { width:min(100%,330px); min-height:360px; border-radius:27px; }
@@ -268,26 +249,34 @@
       response.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    function makeConfetti() {
-      const colors = ['#e99a5a', '#c8796d', '#f4c36e', '#9fba9a', '#b47b61'];
-      for (let i = 0; i < 34; i++) {
+    function makeConfetti(originButton = yesBtn, count = 54) {
+      const colors = ['#f97316', '#f43f5e', '#7c3aed', '#0ea5e9', '#f4c36e', '#10b981', '#ec4899'];
+      const rect = originButton.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+      for (let i = 0; i < count; i++) {
         const piece = document.createElement('span');
         piece.className = 'confetti';
-        piece.style.left = `${42 + Math.random() * 16}%`;
-        piece.style.top = `${12 + Math.random() * 12}%`;
+        const angle = (Math.PI * 2 * i / count) + (Math.random() - .5) * .24;
+        const distance = 75 + Math.random() * Math.min(190, window.innerWidth * .32);
+        piece.style.left = `${originX}px`;
+        piece.style.top = `${originY}px`;
         piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-        piece.style.setProperty('--drift', `${(Math.random() - .5) * 380}px`);
-        piece.style.animationDelay = `${Math.random() * .25}s`;
+        piece.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+        piece.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+        piece.style.setProperty('--spin', `${Math.random() * 900 - 450}deg`);
+        piece.style.animationDelay = `${Math.random() * .12}s`;
         piece.style.width = `${5 + Math.random() * 5}px`;
-        piece.style.height = `${8 + Math.random() * 7}px`;
+        piece.style.height = `${7 + Math.random() * 8}px`;
+        if (Math.random() > .72) piece.style.borderRadius = '50%';
         document.body.appendChild(piece);
-        window.setTimeout(() => piece.remove(), 2300);
+        window.setTimeout(() => piece.remove(), 1500);
       }
     }
 
     yesBtn.addEventListener('click', () => {
       showMessage('এই তো, কথা পাকা! ☕', 'তাহলে একদিন চা খেতে বসা যাক। গল্প জমলে ভালো, না জমলেও চা কিন্তু বৃথা যাবে না!');
-      makeConfetti();
+      makeConfetti(yesBtn);
     });
 
     talkBtn.addEventListener('click', () => {
@@ -297,7 +286,7 @@
     secretBtn.addEventListener('click', () => {
       secretClicked = true;
       showMessage('আহা, ক্লিক করে ফেললেন! 🙈', 'তাহলে রহস্যটা থাক। এক কাপ চায়ের আড্ডায় উত্তরটা জানা যাবে! ☕💘');
-      makeConfetti();
+      makeConfetti(secretBtn);
     });
 
     // If the visitor leaves the playful love button untouched, reveal a gentle message.
@@ -307,46 +296,10 @@
       }
     }, 10000);
 
-    // The playful “No” button moves only within the button group,
-    // so it won't cover the message or the tea illustration.
-    function dodgeNoButton() {
-      const actions = document.querySelector('.actions');
-      const area = actions.getBoundingClientRect();
-      const before = noBtn.getBoundingClientRect();
-      const oldX = before.left - area.left;
-      const oldY = before.top - area.top;
-
-      noBtn.classList.add('is-dodging');
-      const rect = noBtn.getBoundingClientRect();
-      const padding = 3;
-      const maxX = Math.max(padding, actions.clientWidth - rect.width - padding);
-      const maxY = Math.max(padding, actions.clientHeight - rect.height - padding);
-      let x = padding;
-      let y = padding;
-
-      for (let attempt = 0; attempt < 20; attempt++) {
-        x = padding + Math.random() * Math.max(0, maxX - padding);
-        y = padding + Math.random() * Math.max(0, maxY - padding);
-        if (Math.hypot(x - oldX, y - oldY) > 65) break;
-      }
-
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
-    }
-
-    noBtn.addEventListener('pointerenter', (event) => {
-      if (event.pointerType === 'mouse') dodgeNoButton();
-    });
-    noBtn.addEventListener('pointerdown', (event) => {
-      event.preventDefault();
-      dodgeNoButton();
-    });
-    noBtn.addEventListener('click', (event) => {
-      event.preventDefault();
-      dodgeNoButton();
-    });
-    window.addEventListener('resize', () => {
-      if (noBtn.classList.contains('is-dodging')) dodgeNoButton();
+    // The “না” button stays compact and clickable; clicking it triggers a full radial confetti burst.
+    noBtn.addEventListener('click', () => {
+      showMessage('না বললেও ঠিক আছে! 😄', 'তোমার উত্তরকে সম্মান করি—এই নাও তোমার ক্লিকের জন্য রঙিন কনফেটি! 🎉☕');
+      makeConfetti(noBtn, 76);
     });
   </script>
 </body>
