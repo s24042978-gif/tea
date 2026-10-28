@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff7ed">
+<title>চা, গল্প & maybe প্রেম ☕</title>
+<style>
+:root {
+  --cream: #fff7ed;
+  --paper: #fffdf9;
+  --brown: #743d2c;
+  --dark: #39241f;
+  --muted: #80675c;
+  --peach: #f5c79f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 10% 10%, #f8d8c0 0, transparent 40%),
+    radial-gradient(ellipse at 90% 90%, #f3b7ad55 0, transparent 35%),
+    var(--cream);
+  color: var(--dark);
+  font-family: "Noto Sans Bengali", "Hind Siliguri",
+               "Nirmala UI", sans-serif;
+}
+button { font: inherit; }
+.container {
+  width: min(1120px, calc(100% - 36px));
+  margin: auto;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 0;
+}
+.brand { font-weight: 800; font-size: 14px; }
+.brand span { color: var(--brown); }
+.pill {
+  border: 1px solid #e8d5c8;
+  border-radius: 30px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--muted);
+  background: #fffdf9b8;
+}
+.hero {
+  min-height: 75vh;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 45px;
+  padding: 28px 0 55px;
+}
+.eyebrow {
+  display: inline-block;
+  background: #fffaf4;
+  color: var(--brown);
+  border: 1px solid #e8c7b0;
+  border-radius: 30px;
+  padding: 9px 14px;
+  font-size: 13px;
+}
+h1 {
+  font-size: clamp(38px, 5vw, 66px);
+  line-height: 1.3;
+  letter-spacing: -1.5px;
+  margin: 23px 0 18px;
+}
+.highlight {
+  color: var(--brown);
+  text-decoration: underline;
+  text-decoration-color: var(--peach);
+  text-decoration-thickness: 8px;
+  text-underline-offset: 3px;
+}
+.lead {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.9;
+  max-width: 520px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.btn {
+  border: 0;
+  border-radius: 15px;
+  padding: 14px 19px;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+  font-weight: 700;
+}
+.btn:hover { transform: translateY(-3px); }
+.yes {
+  color: white;
+  background: var(--brown);
+  box-shadow: 0 10px 24px #743d2c35;
+}
+.yes:hover { background: #4c2922; }
+.talk, .no {
+  background: var(--paper);
+  color: var(--brown);
+  border: 1px solid #e8d5c8;
+}
+.no { border-style: dashed; }
+.no.dodging {
+  position: fixed;
+  z-index: 1000;
+  margin: 0;
+}
+.hint {
+  color: #987e72;
+  font-size: 13px;
+  margin-top: 20px;
+}
+.response {
+  display: none;
+  background: #fffaf4;
+  border: 1px solid #e8c7b0;
+  color: var(--brown);
+  padding: 15px;
+  border-radius: 16px;
+  margin-top: 18px;
+  line-height: 1.8;
+}
+.response.show { display: block; animation: appear .3s ease; }
+.response strong { display: block; font-size: 18px; }
+.scene {
+  min-height: 440px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.orbit {
+  position: absolute;
+  width: min(100%, 390px);
+  aspect-ratio: 1;
+  border: 1px dashed #d8b7a1;
+  border-radius: 50%;
+  animation: spin 40s linear infinite;
+}
+.orbit::before {
+  content: "✦";
+  position: absolute;
+  top: 12%;
+  left: 15%;
+  color: #d78a50;
+  font-size: 26px;
+}
+.card {
+  position: relative;
+  width: min(100%, 350px);
+  min-height: 390px;
+  border: 1px solid white;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #fffefa, #fff0e3);
+  box-shadow: 0 28px 70px #5b32231f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: float 5s ease-in-out infinite;
+}
+.sticker {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  background: #f4c36e;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  transform: rotate(9deg);
+}
+.cup-wrap {
+  width: 230px;
+  height: 220px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.steam {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  gap: 15px;
+}
+.steam i {
+  height: 43px;
+  width: 9px;
+  border-left: 3px solid #c79b80;
+  border-radius: 50%;
+  animation: steam 2s ease-in-out infinite;
+}
+.steam i:nth-child(2) { animation-delay: .6s; }
+.steam i:nth-child(3) { animation-delay: 1.1s; }
+.cup {
+  position: absolute;
+  left: 29px;
+  bottom: 32px;
+  width: 160px;
+  height: 115px;
+  border: 3px solid #e8cbb8;
+  border-radius: 14px 14px 60px 60px;
+  background: linear-gradient(135deg, white, #e7c7b2);
+  box-shadow: inset -10px -8px 18px #d9b59a55,
+              0 18px 22px #81543c20;
+  transform: rotate(-5deg);
+}
+.tea {
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 8px;
+  height: 21px;
+  background: #713b25;
+  border: 3px solid #f4dfd0;
+  border-radius: 50%;
+}
+.handle {
+  position: absolute;
+  right: 18px;
+  bottom: 65px;
+  width: 55px;
+  height: 58px;
+  border: 11px solid #e8cbb8;
+  border-left-width: 7px;
+  border-radius: 50%;
+}
+.saucer {
+  position: absolute;
+  bottom: 23px;
+  width: 205px;
+  height: 29px;
+  border: 2px solid #e7c5ae;
+  border-radius: 50%;
+  background: #fff8ef;
+}
+.hearts {
+  position: absolute;
+  top: 100px;
+  left: 24px;
+  color: #c8796d;
+  font-size: 24px;
+  animation: float 3s ease-in-out infinite;
+}
+.caption {
+  text-align: center;
+  color: var(--brown);
+  font-weight: bold;
+  font-size: 21px;
+  margin-top: 8px;
+}
+.caption small {
+  display: block;
+  font-size: 10px;
+  color: #9b7a68;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+.note {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  background: white;
+  border: 1px solid #f0ded1;
+  border-radius: 14px;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  transform: rotate(-3deg);
+}
+footer {
+  border-top: 1px solid #743d2c20;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #987e72;
+  font-size: 12px;
+}
+.confetti {
+  position: fixed;
+  z-index: 2000;
+  top: 20%;
+  width: 8px;
+  height: 12px;
+  pointer-events: none;
+  animation: fall 1.7s ease-out forwards;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(1deg); }
+  50% { transform: translateY(-9px) rotate(-1deg); }
+}
+@keyframes steam {
+  0% { opacity: 0; transform: translateY(15px); }
+  40% { opacity: .7; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+@keyframes appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fall {
+  to { opacity: 0; transform: translate(var(--drift), 75vh) rotate(500deg); }
+}
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; gap: 10px; }
+  .copy { text-align: center; }
+  .lead { margin-left: auto; margin-right: auto; }
+  .actions { justify-content: center; }
+  .scene { min-height: 410px; }
+  .note { left: calc(50% - 150px); }
+}
+@media (max-width: 480px) {
+  .container { width: calc(100% - 28px); }
+  nav { padding: 17px 0; }
+  .brand { font-size: 11px; }
+  .pill { font-size: 10px; }
+  h1 { font-size: clamp(36px, 10vw, 46px); }
+  .lead { font-size: 15px; }
+  .actions { display: grid; grid-template-columns: 1fr; }
+  .btn { width: 100%; }
+  .scene { min-height: 375px; }
+  .card { min-height: 350px; width: min(100%, 320px); }
+  .cup-wrap { transform: scale(.85); }
+  .note { left: calc(50% - 140px); bottom: 0; }
+  footer { justify-content: center; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <div class="brand">☕ <span>CHA · GOLPO · MAYBE LOVE</span></div>
+    <div class="pill">এক কাপ চা, একটুখানি গল্প</div>
+  </nav>
+
+  <main class="hero">
+    <section class="copy">
+      <div class="eyebrow">● কোনো চাপ নেই, শুধু চা</div>
+      <h1>
+        আসেন, দেখা করি!<br>
+        চা খাই—<span class="highlight">প্রেম হইলে হইলো,</span><br>
+        নয়তো নাই!
+      </h1>
+      <p class="lead">
+        জীবনের সবকিছু আগে থেকে ঠিক করতে হবে নাকি?
+        <b>এক কাপ চা, কিছু গল্প, আর একটু পরিচয়</b>—
+        বাকিটা সময়ের হাতে থাক।
+      </p>
+
+      <div class="actions">
+        <button class="btn yes" id="yesBtn">চলো, চা খাই ☕</button>
+        <button class="btn talk" id="talkBtn">আগে একটু কথা বলি ↗</button>
+        <button class="btn no" id="noBtn">না 🙈</button>
+      </div>
+
+      <p class="hint">♡ ভালো লাগলে গল্প বাড়বে, না হলে চা তো আছেই।</p>
+      <div class="response" id="response" aria-live="polite"></div>
+    </section>
+
+    <section class="scene">
+      <div class="orbit"></div>
+      <div class="card">
+        <div class="sticker">NO<br>PRESSURE<br>♡</div>
+        <div class="hearts">♥</div>
+        <div class="cup-wrap">
+          <div class="steam"><i></i><i></i><i></i></div>
+          <div class="handle"></div>
+          <div class="saucer"></div>
+          <div class="cup"><div class="tea"></div></div>
+        </div>
+        <div class="caption">
+          চা গরম, কথা নরম।
+          <small>TEA FIRST, EVERYTHING ELSE LATER</small>
+        </div>
+      </div>
+      <div class="note">আজকের প্ল্যান: <b>চা + গল্প ☕</b></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Made with tea, curiosity &hearts;</span>
+    <span>No awkward promises · Just be yourself · চা হলে জমে</span>
+  </footer>
+</div>
+
+<script>
+const response = document.getElementById("response");
+const yesBtn = document.getElementById("yesBtn");
+const talkBtn = document.getElementById("talkBtn");
+const noBtn = document.getElementById("noBtn");
+
+function showMessage(title, detail) {
+  response.innerHTML = "";
+  const strong = document.createElement("strong");
+  strong.textContent = title;
+  const text = document.createElement("span");
+  text.textContent = detail;
+  response.append(strong, text);
+  response.classList.add("show");
+}
+
+function confetti() {
+  const colors = ["#e99a5a", "#c8796d", "#f4c36e", "#9fba9a"];
+  for (let i = 0; i < 32; i++) {
+    const piece = document.createElement("span");
+    piece.className = "confetti";
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.background =
+      colors[Math.floor(Math.random() * colors.length)];
+    piece.style.setProperty("--drift", (Math.random() - .5) * 240 + "px");
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 1900);
+  }
+}
+
+yesBtn.addEventListener("click", () => {
+  showMessage(
+    "এই তো, কথা পাকা! ☕",
+    "তাহলে একদিন চা খেতে বসা যাক। গল্প জমলে ভালো, না জমলেও চা কিন্তু বৃথা যাবে না!"
+  );
+  confetti();
+});
+
+talkBtn.addEventListener("click", () => {
+  showMessage(
+    "একদম, আগে পরিচয়! 💬",
+    "কোনো তাড়া নেই—আগে একটু কথা, তারপর দুজনের ইচ্ছা হলে চায়ের প্ল্যান।"
+  );
+});
+
+// The playful "No" button moves away from the pointer or touch.
+function dodgeNoButton() {
+  if (!noBtn.classList.contains("dodging")) {
+    noBtn.classList.add("dodging");
+  }
+
+  const rect = noBtn.getBoundingClientRect();
+  const padding = 12;
+  const maxX = Math.max(padding, window.innerWidth - rect.width - padding);
+  const maxY = Math.max(padding, window.innerHeight - rect.height - padding);
+
+  const oldX = rect.left;
+  const oldY = rect.top;
+  let x = padding;
+  let y = padding;
+
+  for (let i = 0; i < 15; i++) {
+    x = padding + Math.random() * Math.max(0, maxX - padding);
+    y = padding + Math.random() * Math.max(0, maxY - padding);
+    if (Math.hypot(x - oldX, y - oldY) > 120) break;
+  }
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("pointerenter", event => {
+  if (event.pointerType === "mouse") dodgeNoButton();
+});
+
+noBtn.addEventListener("pointerdown", event => {
+  event.preventDefault();
+  dodgeNoButton();
+});
+
+noBtn.addEventListener("click", event => {
+  event.preventDefault();
+  dodgeNoButton();
+});
+
+window.addEventListener("resize", () => {
+  if (noBtn.classList.contains("dodging")) dodgeNoButton();
+});
+</script>
+</body>
+      </html>
